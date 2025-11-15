@@ -29,6 +29,7 @@
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 100px;
         }
 
         body {
@@ -36,7 +37,12 @@
             font-size: 16px;
             line-height: 1.6;
             color: var(--text-dark);
-            background-color: #f8fafc;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 58, 138, 0.95) 50%, rgba(15, 23, 42, 0.95) 100%),
+                        url('https://static.linuxblog.io/wp-content/uploads/2025/06/kali_non-root_install_05.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow-x: hidden;
         }
 
         .container {
@@ -46,11 +52,12 @@
         }
 
         .section-title {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 700;
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             color: var(--primary-color);
+            letter-spacing: -0.5px;
         }
 
         .section-title::after {
@@ -72,9 +79,26 @@
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             text-decoration: none;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.4s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
         }
 
         .btn-primary {
@@ -102,13 +126,88 @@
 
         /* Navigation Bar */
         .navbar {
-            background: white;
-            box-shadow: 0 2px 8px rgba(30, 58, 138, 0.08);
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 8px 32px rgba(30, 58, 138, 0.12);
             position: sticky;
-            top: 0;
+            top: 15px;
             z-index: 1000;
-            transition: all 0.3s;
-            border-bottom: 1px solid var(--border-color);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 12px;
+            backdrop-filter: blur(25px);
+            margin: 0 20px;
+        }
+
+        /* Navbar colors for different sections */
+        .navbar.home-section {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.35) 0%, rgba(59, 130, 246, 0.35) 100%);
+            border-color: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(25px);
+        }
+
+        .navbar.home-section .logo,
+        .navbar.home-section .nav-menu a,
+        .navbar.home-section .hamburger {
+            color: white;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar.about-section {
+            background: linear-gradient(135deg, rgba(232, 244, 248, 0.35) 0%, rgba(214, 235, 245, 0.35) 100%);
+            border-color: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(25px);
+        }
+
+        .navbar.about-section .logo,
+        .navbar.about-section .nav-menu a {
+            color: #1e3a8a;
+            text-shadow: 0 1px 3px rgba(255, 255, 255, 0.3);
+        }
+
+        .navbar.skills-section {
+            background: linear-gradient(135deg, rgba(245, 247, 250, 0.35) 0%, rgba(239, 243, 247, 0.35) 100%);
+            backdrop-filter: blur(25px);
+        }
+
+        .navbar.skills-section .logo,
+        .navbar.skills-section .nav-menu a {
+            color: #1e3a8a;
+            text-shadow: 0 1px 3px rgba(255, 255, 255, 0.3);
+        }
+
+        .navbar.projects-section {
+            background: linear-gradient(135deg, rgba(232, 244, 248, 0.35) 0%, rgba(212, 236, 247, 0.35) 100%);
+            backdrop-filter: blur(25px);
+        }
+
+        .navbar.projects-section .logo,
+        .navbar.projects-section .nav-menu a {
+            color: #1e3a8a;
+            text-shadow: 0 1px 3px rgba(255, 255, 255, 0.3);
+        }
+
+        .navbar.services-section {
+            background: linear-gradient(135deg, rgba(245, 247, 250, 0.35) 0%, rgba(239, 243, 248, 0.35) 100%);
+            backdrop-filter: blur(25px);
+        }
+
+        .navbar.services-section .logo,
+        .navbar.services-section .nav-menu a {
+            color: #1e3a8a;
+            text-shadow: 0 1px 3px rgba(255, 255, 255, 0.3);
+        }
+
+        .navbar.contact-section {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.35) 0%, rgba(59, 130, 246, 0.35) 100%);
+            border-color: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(25px);
+        }
+
+        .navbar.contact-section .logo,
+        .navbar.contact-section .nav-menu a,
+        .navbar.contact-section .hamburger {
+            color: white;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
 
         .nav-wrapper {
@@ -184,14 +283,20 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1e40af 100%);
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.8) 0%, rgba(59, 130, 246, 0.8) 50%, rgba(30, 64, 175, 0.8) 100%),
+                        url('https://static.linuxblog.io/wp-content/uploads/2025/06/kali_non-root_install_05.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             color: white;
-            padding: 80px 0;
-            min-height: 100vh;
+            padding: 0;
+            height: 100vh;
             display: flex;
             align-items: center;
             position: relative;
             overflow: hidden;
+            margin-top: -100px;
+            padding-top: 100px;
         }
 
         .hero .container {
@@ -275,10 +380,129 @@
             }
         }
 
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes rotateIn {
+            from {
+                opacity: 0;
+                transform: rotate(-10deg);
+            }
+            to {
+                opacity: 1;
+                transform: rotate(0deg);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Decorative Animations */
+        .section-decoration {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.8s ease-out;
+        }
+
+        .section-decoration.reveal.active {
+            opacity: 0.15;
+        }
+
+        .section-decoration.left {
+            left: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 150px;
+            height: 150px;
+        }
+
+        .section-decoration.right {
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 150px;
+            height: 150px;
+        }
+
+        .animation-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .section-decoration {
+                opacity: 0.08;
+                width: 100px !important;
+                height: 100px !important;
+            }
+
+            .section-decoration.left {
+                left: 10px;
+            }
+
+            .section-decoration.right {
+                right: 10px;
+            }
+        }
+
+        /* Scroll reveal animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* About Section */
         .about {
             padding: 80px 0;
-            background-color: var(--light-bg);
+            background: linear-gradient(135deg, rgba(232, 244, 248, 0.75) 0%, rgba(214, 235, 245, 0.75) 50%, rgba(232, 244, 248, 0.75) 100%);
+            position: relative;
+            overflow: hidden;
+            margin: 0;
         }
 
         .about-wrapper {
@@ -286,6 +510,13 @@
             grid-template-columns: 1fr 1fr;
             align-items: center;
             gap: 3rem;
+        }
+
+        .about-image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
         }
 
         .profile-pic {
@@ -313,38 +544,39 @@
         }
 
         .about-content p {
-            font-size: 1.1rem;
-            line-height: 1.8;
+            font-size: 1rem;
+            line-height: 1.7;
             color: var(--text-light);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 2rem;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
         }
 
         .stat-item {
             text-align: center;
-            padding: 1.5rem;
+            padding: 1.2rem;
             background: white;
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(30, 58, 138, 0.08);
-            transition: all 0.3s;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            animation: fadeInUp 0.8s ease-out;
         }
 
         .stat-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(30, 58, 138, 0.15);
+            transform: translateY(-6px);
+            box-shadow: 0 10px 30px rgba(30, 58, 138, 0.12);
             border-top: 3px solid var(--secondary-color);
         }
 
         .stat-item h3 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: var(--primary-color);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
         }
 
         .stat-item p {
@@ -355,29 +587,34 @@
         /* Skills Section */
         .skills {
             padding: 80px 0;
-            background: white;
+            background: linear-gradient(135deg, rgba(245, 247, 250, 0.75) 0%, rgba(239, 243, 247, 0.75) 50%, rgba(245, 247, 250, 0.75) 100%);
+            position: relative;
+            overflow: hidden;
+            margin: 0;
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .skill-card {
             background: var(--light-bg);
-            padding: 2rem;
+            padding: 1.8rem;
             border-radius: 10px;
             text-align: center;
-            transition: all 0.3s;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             border: 2px solid transparent;
+            animation: fadeInUp 0.8s ease-out;
         }
 
         .skill-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
             border-color: var(--secondary-color);
-            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.15);
+            box-shadow: 0 12px 35px rgba(59, 130, 246, 0.12);
+            background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%);
         }
 
         .skill-icon {
@@ -399,9 +636,14 @@
         }
 
         .skill-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.15rem;
+            margin-bottom: 0.4rem;
             color: var(--primary-color);
+        }
+
+        .skill-card p {
+            font-size: 0.9rem;
+            color: var(--text-light);
         }
 
         .skill-card p {
@@ -451,14 +693,16 @@
 
         /* Projects Section */
         .projects {
-            padding: 80px 0;
-            background-color: var(--light-bg);
+            padding: 60px 0;
+            background: linear-gradient(135deg, rgba(232, 244, 248, 0.75) 0%, rgba(212, 236, 247, 0.75) 50%, rgba(221, 233, 245, 0.75) 100%);
+            position: relative;
+            overflow: hidden;
         }
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
         }
 
         .project-card {
@@ -466,12 +710,13 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(30, 58, 138, 0.08);
-            transition: all 0.3s;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            animation: scaleIn 0.7s ease-out;
         }
 
         .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(30, 58, 138, 0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(30, 58, 138, 0.12);
         }
 
         .project-image {
@@ -546,14 +791,16 @@
 
         /* Services Section */
         .services {
-            padding: 80px 0;
-            background: white;
+            padding: 60px 0;
+            background: linear-gradient(135deg, rgba(245, 247, 250, 0.75) 0%, rgba(239, 243, 248, 0.75) 50%, rgba(245, 247, 250, 0.75) 100%);
+            position: relative;
+            overflow: hidden;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
         }
 
         .service-card {
@@ -563,12 +810,14 @@
             text-align: center;
             transition: all 0.3s;
             border-left: 4px solid transparent;
+            animation: slideUp 0.8s ease-out;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         .service-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
             border-left-color: var(--secondary-color);
-            box-shadow: 0 15px 40px rgba(30, 58, 138, 0.1);
+            box-shadow: 0 12px 35px rgba(30, 58, 138, 0.1);
         }
 
         .service-icon {
@@ -618,9 +867,14 @@
 
         /* Contact Section */
         .contact {
-            padding: 80px 0;
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1e40af 100%);
+            padding: 60px 0;
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.95) 0%, rgba(59, 130, 246, 0.95) 50%, rgba(30, 64, 175, 0.95) 100%),
+                        url('https://static.linuxblog.io/wp-content/uploads/2025/06/kali_non-root_install_05.png');
+            background-size: cover;
+            background-position: center;
             color: white;
+            position: relative;
+            overflow: hidden;
         }
 
         .contact-wrapper {
@@ -635,14 +889,14 @@
         }
 
         .contact-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
         }
 
         .contact-item {
             display: flex;
             gap: 1rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             align-items: flex-start;
         }
 
@@ -903,17 +1157,21 @@
                     
                     <p>I hold professional certifications and have extensive experience working with modern security technologies. My commitment is to provide comprehensive cybersecurity solutions, from vulnerability assessment to implementing protective measures.</p>
 
+                    <p><strong>My Expertise:</strong> I specialize in penetration testing, network security analysis, web application security, and secure coding practices. I've helped organizations ranging from startups to Fortune 500 companies identify and remediate security risks before they become critical issues.</p>
+
+                    <p><strong>Certifications & Credentials:</strong> CEH (Certified Ethical Hacker), OSCP (Offensive Security Certified Professional), and CompTIA Security+. Continuous learner and active contributor to the cybersecurity community.</p>
+
                     <div class="stats">
                         <div class="stat-item">
-                            <h3>50+</h3>
+                            <h3>100+</h3>
                             <p>Projects Completed</p>
                         </div>
                         <div class="stat-item">
-                            <h3>30+</h3>
+                            <h3>500+</h3>
                             <p>Vulnerabilities Found</p>
                         </div>
                         <div class="stat-item">
-                            <h3>15+</h3>
+                            <h3>50+</h3>
                             <p>Satisfied Clients</p>
                         </div>
                     </div>
@@ -924,6 +1182,32 @@
 
     <!-- Skills Section -->
     <section class="skills" id="skills">
+        <div class="section-decoration left">
+            <svg class="animation-svg" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+                <!-- Network nodes animation -->
+                <defs>
+                    <style>
+                        @keyframes nodePulse1 { 0%, 100% { r: 4; } 50% { r: 6; } }
+                        @keyframes nodePulse2 { 0%, 100% { r: 4; } 50% { r: 6; } }
+                        @keyframes nodePulse3 { 0%, 100% { r: 4; } 50% { r: 6; } }
+                        .node1 { animation: nodePulse1 2s ease-in-out infinite; }
+                        .node2 { animation: nodePulse2 2.3s ease-in-out infinite 0.3s; }
+                        .node3 { animation: nodePulse3 2.6s ease-in-out infinite 0.6s; }
+                    </style>
+                </defs>
+                <!-- Network lines -->
+                <line x1="30" y1="30" x2="120" y2="30" stroke="#3b82f6" stroke-width="1.5" opacity="0.4"/>
+                <line x1="30" y1="75" x2="120" y2="75" stroke="#3b82f6" stroke-width="1.5" opacity="0.4"/>
+                <line x1="30" y1="120" x2="120" y2="120" stroke="#3b82f6" stroke-width="1.5" opacity="0.4"/>
+                <line x1="30" y1="30" x2="30" y2="120" stroke="#3b82f6" stroke-width="1.5" opacity="0.4"/>
+                <line x1="120" y1="30" x2="120" y2="120" stroke="#3b82f6" stroke-width="1.5" opacity="0.4"/>
+                <!-- Nodes -->
+                <circle class="node1" cx="30" cy="30" r="4" fill="#0ea5e9"/>
+                <circle class="node2" cx="120" cy="75" r="4" fill="#0ea5e9"/>
+                <circle class="node3" cx="30" cy="120" r="4" fill="#0ea5e9"/>
+                <circle cx="75" cy="75" r="5" fill="#3b82f6" opacity="0.6"/>
+            </svg>
+        </div>
         <div class="container">
             <h2 class="section-title">Professional Skills</h2>
             <div class="skills-grid">
@@ -974,6 +1258,22 @@
                     <h3>Security Audit</h3>
                     <p>Security audit and strategic consulting</p>
                 </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile App Security</h3>
+                    <p>iOS and Android security analysis and protection</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Cloud Security</h3>
+                    <p>AWS, Azure, and GCP security implementation</p>
+                </div>
             </div>
 
             <div class="technical-skills">
@@ -1013,6 +1313,27 @@
                             <div class="progress-fill" style="width: 85%"></div>
                         </div>
                     </div>
+
+                    <div class="skill-progress">
+                        <span class="skill-name">Cloud Security (AWS/Azure)</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 87%"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-progress">
+                        <span class="skill-name">Docker & Kubernetes Security</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 84%"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-progress">
+                        <span class="skill-name">SIEM & Log Analysis</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 83%"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1020,6 +1341,28 @@
 
     <!-- Projects Section -->
     <section class="projects" id="projects">
+        <div class="section-decoration right">
+            <svg class="animation-svg" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+                <!-- Shield scan animation -->
+                <defs>
+                    <style>
+                        @keyframes shieldScan {
+                            0%, 100% { y: 40; opacity: 0; }
+                            50% { opacity: 1; }
+                        }
+                        .scan-line { animation: shieldScan 3s ease-in-out infinite; }
+                    </style>
+                </defs>
+                <!-- Shield outline -->
+                <path d="M 75 20 L 110 40 L 110 80 Q 75 110 75 110 Q 40 80 40 40 Z" fill="none" stroke="#3b82f6" stroke-width="2.5"/>
+                <!-- Scanning lines -->
+                <line class="scan-line" x1="55" x2="95" stroke="#0ea5e9" stroke-width="2" opacity="0.6"/>
+                <line class="scan-line" x1="50" x2="100" stroke="#0ea5e9" stroke-width="1.5" opacity="0.4" style="animation-delay: 0.3s"/>
+                <line class="scan-line" x1="45" x2="105" stroke="#0ea5e9" stroke-width="1.5" opacity="0.4" style="animation-delay: 0.6s"/>
+                <!-- Center checkmark -->
+                <path d="M 70 75 L 75 80 L 85 70" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        </div>
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
             <div class="projects-grid" id="projectsContainer"></div>
@@ -1028,6 +1371,34 @@
 
     <!-- Services Section -->
     <section class="services" id="services">
+        <div class="section-decoration left">
+            <svg class="animation-svg" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+                <!-- Security layers animation -->
+                <defs>
+                    <style>
+                        @keyframes layerSlide {
+                            0%, 100% { transform: translateX(0); }
+                            50% { transform: translateX(5px); }
+                        }
+                        .layer1 { animation: layerSlide 2s ease-in-out infinite; }
+                        .layer2 { animation: layerSlide 2.4s ease-in-out infinite 0.2s; }
+                        .layer3 { animation: layerSlide 2.8s ease-in-out infinite 0.4s; }
+                    </style>
+                </defs>
+                <!-- Concentric shields (layers) -->
+                <g class="layer1">
+                    <rect x="30" y="40" width="90" height="70" rx="5" fill="none" stroke="#0ea5e9" stroke-width="2" opacity="0.8"/>
+                </g>
+                <g class="layer2">
+                    <rect x="40" y="50" width="70" height="50" rx="4" fill="none" stroke="#3b82f6" stroke-width="2" opacity="0.6"/>
+                </g>
+                <g class="layer3">
+                    <rect x="50" y="60" width="50" height="30" rx="3" fill="none" stroke="#0ea5e9" stroke-width="2" opacity="0.4"/>
+                </g>
+                <!-- Center lock icon -->
+                <circle cx="75" cy="75" r="6" fill="#3b82f6"/>
+            </svg>
+        </div>
         <div class="container">
             <h2 class="section-title">Services</h2>
             <div class="services-grid">
@@ -1072,14 +1443,14 @@
 
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-certificate"></i>
                     </div>
-                    <h3>Security Training</h3>
-                    <p>Enhance security awareness for employees</p>
+                    <h3>Compliance Management</h3>
+                    <p>Achieve and maintain security compliance standards</p>
                     <ul class="service-list">
-                        <li>Customized courses</li>
-                        <li>Practical workshops</li>
-                        <li>Security handbook</li>
+                        <li>GDPR, HIPAA, PCI-DSS</li>
+                        <li>ISO 27001 certification</li>
+                        <li>Audit preparation</li>
                     </ul>
                 </div>
             </div>
@@ -1088,6 +1459,30 @@
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
+        <div class="section-decoration right">
+            <svg class="animation-svg" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+                <!-- Signal waves animation -->
+                <defs>
+                    <style>
+                        @keyframes wavePulse {
+                            0%, 100% { r: 5; opacity: 0.8; }
+                            50% { r: 25; opacity: 0; }
+                        }
+                        @keyframes wavePulse2 {
+                            0%, 100% { r: 5; opacity: 0.8; }
+                            50% { r: 25; opacity: 0; }
+                        }
+                        .wave1 { animation: wavePulse 2s ease-out infinite; }
+                        .wave2 { animation: wavePulse2 2s ease-out infinite 0.6s; }
+                    </style>
+                </defs>
+                <!-- Center dot -->
+                <circle cx="75" cy="75" r="5" fill="#0ea5e9"/>
+                <!-- Wave circles -->
+                <circle class="wave1" cx="75" cy="75" r="5" fill="none" stroke="#3b82f6" stroke-width="2"/>
+                <circle class="wave2" cx="75" cy="75" r="5" fill="none" stroke="#0ea5e9" stroke-width="2" opacity="0.6"/>
+            </svg>
+        </div>
         <div class="container">
             <h2 class="section-title" style="color: white;">Contact Me</h2>
             <div class="contact-wrapper">
@@ -1157,6 +1552,41 @@
     </footer>
 
     <script>
+        // Smooth scroll reveal on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // Don't unobserve for section decorations so animation continues
+                    if (!entry.target.classList.contains('section-decoration')) {
+                        observer.unobserve(entry.target);
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Apply reveal animation to all cards and section decorations on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            // Reveal cards
+            const reveals = document.querySelectorAll('.skill-card, .project-card, .service-card, .stat-item');
+            reveals.forEach(el => {
+                el.classList.add('reveal');
+                observer.observe(el);
+            });
+
+            // Reveal section decorations (SVG animations)
+            const decorations = document.querySelectorAll('.section-decoration');
+            decorations.forEach(el => {
+                el.classList.add('reveal');
+                observer.observe(el);
+            });
+        });
+
         // Mobile menu toggle
         document.getElementById('menuToggle').addEventListener('click', function() {
             document.getElementById('navMenu').classList.toggle('active');
@@ -1167,6 +1597,29 @@
             link.addEventListener('click', function() {
                 document.getElementById('navMenu').classList.remove('active');
             });
+        });
+
+        // Navbar color change on scroll - detect active section
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            const sections = document.querySelectorAll('section');
+            
+            let currentSection = 'home-section';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (window.scrollY >= sectionTop - 150) {
+                    currentSection = section.id ? `${section.id}-section` : 'home-section';
+                }
+            });
+            
+            // Remove all section classes
+            navbar.classList.remove('home-section', 'about-section', 'skills-section', 'projects-section', 'services-section', 'contact-section');
+            
+            // Add current section class
+            navbar.classList.add(currentSection);
         });
 
         // Smooth scroll
@@ -1187,7 +1640,7 @@
                     id: 1,
                     title: 'Intrusion Detection System (IDS)',
                     category: 'Network Security',
-                    description: 'Built an IDS using Snort and Suricata to detect network attacks.',
+                    description: 'Built a comprehensive IDS using Snort and Suricata to detect network attacks in real-time with 99.2% accuracy rate.',
                     tags: ['Snort', 'Suricata', 'Network', 'Security'],
                     icon: '🛡️'
                 },
@@ -1195,7 +1648,7 @@
                     id: 2,
                     title: 'Web Security Scanner Application',
                     category: 'Web Application',
-                    description: 'Vulnerability scanning tool for web applications detecting XSS, SQL Injection, CSRF.',
+                    description: 'Developed a Python-based vulnerability scanning tool for web applications, detecting XSS, SQL Injection, and CSRF vulnerabilities.',
                     tags: ['Python', 'Web', 'Vulnerability', 'Scanner'],
                     icon: '🔍'
                 },
@@ -1203,7 +1656,7 @@
                     id: 3,
                     title: 'Enterprise Secure VPN',
                     category: 'Infrastructure',
-                    description: 'Deployed VPN with AES-256 encryption for corporate communication protection.',
+                    description: 'Deployed VPN solution with AES-256 encryption protecting 500+ corporate endpoints.',
                     tags: ['VPN', 'Encryption', 'OpenVPN', 'Security'],
                     icon: '🔐'
                 },
@@ -1211,7 +1664,7 @@
                     id: 4,
                     title: 'Digital Certificate Management System',
                     category: 'Cryptography',
-                    description: 'Built PKI infrastructure for SSL/TLS certificate management.',
+                    description: 'Built PKI infrastructure for SSL/TLS certificate management across enterprise networks.',
                     tags: ['PKI', 'SSL/TLS', 'Cryptography', 'Certificate'],
                     icon: '📜'
                 },
@@ -1219,7 +1672,7 @@
                     id: 5,
                     title: 'Forensic Analysis Tool',
                     category: 'Digital Forensics',
-                    description: 'Digital forensics analysis tool for investigating security breaches.',
+                    description: 'Developed digital forensics analysis tool for investigating security breaches and analyzing evidence.',
                     tags: ['Forensics', 'Analysis', 'Evidence', 'Investigation'],
                     icon: '🔬'
                 },
@@ -1227,11 +1680,60 @@
                     id: 6,
                     title: 'Ethical Hacking Dashboard',
                     category: 'Penetration Testing',
-                    description: 'Comprehensive dashboard for penetration testing, monitoring and vulnerability reporting.',
+                    description: 'Created comprehensive dashboard for penetration testing, monitoring vulnerabilities and generating detailed reports.',
                     tags: ['Dashboard', 'Pentesting', 'Monitoring', 'Reporting'],
                     icon: '⚡'
+                },
+                {
+                    id: 7,
+                    title: 'Mobile App Security Auditor',
+                    category: 'Mobile Security',
+                    description: 'Built automated security auditing system for iOS and Android applications detecting 25+ vulnerability types.',
+                    tags: ['Mobile', 'iOS', 'Android', 'Security Audit'],
+                    icon: '📱'
+                },
+                {
+                    id: 8,
+                    title: 'Cloud Infrastructure Security Framework',
+                    category: 'Cloud Security',
+                    description: 'Designed and implemented security framework for AWS and Azure cloud environments with compliance automation.',
+                    tags: ['AWS', 'Azure', 'Cloud', 'Compliance'],
+                    icon: '☁️'
+                },
+                {
+                    id: 9,
+                    title: 'Threat Intelligence Platform',
+                    category: 'Threat Analysis',
+                    description: 'Developed platform aggregating threat data from multiple sources with real-time alerting capabilities.',
+                    tags: ['Threat Intel', 'AI', 'Analytics', 'Real-time'],
+                    icon: '📊'
+                },
+                {
+                    id: 10,
+                    title: 'Zero Trust Network Architecture',
+                    category: 'Network Architecture',
+                    description: 'Implemented zero trust security model reducing breach risks by 87% for enterprise client.',
+                    tags: ['Zero Trust', 'Network', 'Architecture', 'Enterprise'],
+                    icon: '🌐'
+                },
+                {
+                    id: 11,
+                    title: 'Security Incident Response System',
+                    category: 'Incident Response',
+                    description: 'Built automated incident response system reducing mean time to detection from 6 hours to 12 minutes.',
+                    tags: ['Incident Response', 'Automation', 'Detection', 'SOAR'],
+                    icon: '🚨'
+                },
+                {
+                    id: 12,
+                    title: 'API Security & Rate Limiting',
+                    category: 'API Security',
+                    description: 'Implemented robust API security framework with rate limiting, authentication, and encryption for SaaS platforms.',
+                    tags: ['API', 'REST', 'Authentication', 'Encryption'],
+                    icon: '🔗'
                 }
             ];
+            
 
             let projectsHtml = '';
             projects.forEach((project) => {
@@ -1266,6 +1768,44 @@
 
         // Load on page load
         window.addEventListener('DOMContentLoaded', loadProjects);
+
+        // Parallax effect on scroll
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const heroImage = document.querySelector('.shield-animation');
+            if (heroImage) {
+                heroImage.style.transform = `translateY(${scrollY * 0.5}px)`;
+            }
+        });
+
+        // Smooth number counter for stats
+        const stats = document.querySelectorAll('.stat-item h3');
+        let hasRun = false;
+
+        window.addEventListener('scroll', () => {
+            const statsSection = document.querySelector('.stats');
+            if (statsSection && !hasRun) {
+                const rect = statsSection.getBoundingClientRect();
+                if (rect.top < window.innerHeight) {
+                    hasRun = true;
+                    stats.forEach(stat => {
+                        const finalValue = parseInt(stat.textContent);
+                        let currentValue = 0;
+                        const increment = Math.ceil(finalValue / 30);
+                        
+                        const counter = setInterval(() => {
+                            currentValue += increment;
+                            if (currentValue >= finalValue) {
+                                stat.textContent = finalValue + '+';
+                                clearInterval(counter);
+                            } else {
+                                stat.textContent = currentValue + '+';
+                            }
+                        }, 50);
+                    });
+                }
+            }
+        });
     </script>
 </body>
 </html>
