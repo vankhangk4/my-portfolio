@@ -126,23 +126,25 @@
 
         /* Navigation Bar */
         .navbar {
-            background: rgba(255, 255, 255, 0.25);
-            box-shadow: 0 8px 32px rgba(30, 58, 138, 0.12);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(30, 58, 138, 0.08);
             position: sticky;
             top: 15px;
             z-index: 1000;
             transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            border: 1px solid rgba(255, 255, 255, 0.18);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 12px;
-            backdrop-filter: blur(25px);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
             margin: 0 20px;
         }
 
         /* Navbar colors for different sections */
         .navbar.home-section {
-            background: linear-gradient(135deg, rgba(30, 58, 138, 0.35) 0%, rgba(59, 130, 246, 0.35) 100%);
-            border-color: rgba(255, 255, 255, 0.18);
-            backdrop-filter: blur(25px);
+            background: rgba(30, 58, 138, 0.15);
+            border-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
         }
 
         .navbar.home-section .logo,
@@ -290,13 +292,14 @@
             background-attachment: fixed;
             color: white;
             padding: 0;
-            height: 100vh;
+            height: calc(100vh + 30px);
             display: flex;
             align-items: center;
             position: relative;
             overflow: hidden;
             margin-top: -100px;
-            padding-top: 100px;
+            padding-top: 0;
+            scroll-snap-align: start;
         }
 
         .hero .container {
@@ -503,6 +506,7 @@
             position: relative;
             overflow: hidden;
             margin: 0;
+            scroll-snap-align: start;
         }
 
         .about-wrapper {
@@ -559,7 +563,7 @@
 
         .stat-item {
             text-align: center;
-            padding: 1.2rem;
+            padding: 0.8rem;
             background: white;
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(30, 58, 138, 0.08);
@@ -591,6 +595,7 @@
             position: relative;
             overflow: hidden;
             margin: 0;
+            scroll-snap-align: start;
         }
 
         .skills-grid {
@@ -697,6 +702,7 @@
             background: linear-gradient(135deg, rgba(232, 244, 248, 0.75) 0%, rgba(212, 236, 247, 0.75) 50%, rgba(221, 233, 245, 0.75) 100%);
             position: relative;
             overflow: hidden;
+            scroll-snap-align: start;
         }
 
         .projects-grid {
@@ -788,13 +794,13 @@
         .project-link:hover {
             background: var(--secondary-color);
         }
-
         /* Services Section */
         .services {
             padding: 60px 0;
             background: linear-gradient(135deg, rgba(245, 247, 250, 0.75) 0%, rgba(239, 243, 248, 0.75) 50%, rgba(245, 247, 250, 0.75) 100%);
             position: relative;
             overflow: hidden;
+            scroll-snap-align: start;
         }
 
         .services-grid {
@@ -875,6 +881,7 @@
             color: white;
             position: relative;
             overflow: hidden;
+            scroll-snap-align: start;
         }
 
         .contact-wrapper {
